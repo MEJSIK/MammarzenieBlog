@@ -43,15 +43,30 @@
 	<link rel="stylesheet" href="css/v4/bootstrap.min.css">
 	<!-- Theme style  -->
 	<link rel="stylesheet" href="css/style.min.css">
-	<link rel="stylesheet" href="css/main.min.css">
+
 	<!-- Font -->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 	<!-- OWL -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css">
+	<link rel="stylesheet" href="./css/owl.carousel.css">
+	<link rel="stylesheet" href="./css/owl.theme.default.css">
+	<!-- Gallery -->
+	<link rel="stylesheet" 2 href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" 3 integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+	 4 crossorigin="anonymous" 5>
 
+
+	<!-- jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<!-- jQuery Easing -->
+	<script src="js/jquery.easing.1.3.js"></script>
+
+
+
+	<!-- Vue -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+
 	<!-- FOR IE9 below -->
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
@@ -62,73 +77,48 @@
 <body>
 	<a href="javascript:" id="return-to-top"><i class="icon-chevron-up"></i></a>
 	<!-- Modal -->
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="ModelNameLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
+	<div id="app2">
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="ModelNameLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
 
-				<!-- Modal Header -->
-				<div class="modal-header">
-					<div>
-						<h4 class="modal-title">KACPER I JEGO MARZENIE</h4>
-						<small>GRUDZIEŃ 18, 2016</small>
+					<!-- Modal Header -->
+					<div class="modal-header">
+						<div>
+							<h4 class="modal-title">{{currentUser.name}}</h4>
+							<small>{{ currentUser.wish }} - {{currentUser.wishday}}</small>
+						</div>
+
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
 					</div>
 
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-				</div>
+					<!-- Modal body -->
+					<div class="modal-body dreamer">
+						<div>
+							<img class="img-fluid dreamer-main-img" :src="currentUser.avatar" alt=""><br />
+							<p class="dreamer-description">
+								{{currentUser.description}}
+							</p>
+						</div>
 
-				<!-- Modal body -->
-				<div class="modal-body dreamer">
-					<img class="img-fluid dreamer-main-img" src="/images/thumb_01.jpg" alt=""><br />
-					<p class="dreamer-description">
-						Tuż przed świętami Bożego Narodzenia pojechałyśmy spełnić marzenie Kacperka. Wszystko oczywiście było tajemnicą i
-						ogromną niespodzianką, w której utrzymaniu dzielnie pomagali nam Rodzice naszego Marzyciela. Wszystkie części
-						dużego,
-						kolorowego basenu z kulkami były schowane, aby Kacper niczego się nie domyślał i nie spodziewał. Zaczęłyśmy od
-						rozłożenia całego basenu… nie było to łatwe zadanie, ponieważ basen miał spore wymiary - aż dwa na dwa metry!
-						Jednak po
-						dłuższej chwili razem z dziewczynami i rodzicami udało nam się rozłożyć stelaż. Najwięcej zabawy i śmiechu było
-						jednak
-						podczas wsypywania kulek do basenu… mnóstwo kolorowych, miękkich kuleczek! Kacperek z bratem aż szaleli z
-						radości, my
-						również miałyśmy ogromną frajdę. Jest to wspaniałe marzenie nie tylko dla dzieci, ale także dla dorosłych. Kiedy
-						basen
-						był już wypełniony po brzegi, razem z Kacprem i jego bratem Adasiem od razu do niego wskoczyliśmy. Chłopaków
-						prawie nie
-						było widać! Zaraz za nami do basenu wskoczyły również dziewczyny i rodzice Kacperka i Adasia. Myślę, że dawno
-						wszyscy
-						się tak nie uśmialiśmy, śmiejąc się i ciesząc jak małe dzieci. Oprócz tego doszłyśmy również do wniosku, że
-						oprócz
-						świetnej zabawy dla dzieci, dla dorosłych jest to wspaniała metoda na masaż i odprężenie. Mam nadzieję, że będzie
-						jak
-						najwięcej tak radosnych i przepełnionych śmiechem spełnień marzeń. Dla takich chwil warto pomagać! Z całego serca
-						dziękujemy firmie Sizeer bez której spełnienie marzenia Kacperka nie byłoby możliwe!
-					</p>
-					<div class="owl-carousel dreamers-slider">
-						<div class="dreamer-dream">
-							<img class="img-fluid" src="http://www3.mammarzenie.org/images/events/1/7/9/17943/Patryk1.jpg" alt="">
-						</div class="dreamer-dream">
-						<div class="dreamer-dream">
-							<img class="img-fluid" src="http://www3.mammarzenie.org/images/events/1/7/9/17943/Patryk1.jpg" alt="">
-						</div>
-						<div class="dreamer-dream">
-							<img class="img-fluid" src="http://www3.mammarzenie.org/images/events/1/7/9/17943/Patryk1.jpg" alt="">
-						</div>
-						<div class="dreamer-dream">
-							<img class="img-fluid" src="http://www3.mammarzenie.org/images/events/1/7/9/17943/Patryk1.jpg" alt="">
+						<div class="card-columns gallery">
+							<div class="galleryItem card" v-for="image in currentUser.gallery">
+								<img class="card-img-top" :src="image" alt="">
+							</div>
 						</div>
 					</div>
+
+
+					<!-- Modal footer  -->
+					<div class="modal-footer">
+						<button type="button" class="btn btn-danger" data-dismiss="modal">Zamknij</button>
+					</div>
+
 				</div>
-
-
-				<!-- Modal footer -->
-				<div class="modal-footer">
-					<button type="button" class="btn btn-danger" data-dismiss="modal">Zamknij</button>
-				</div>
-
 			</div>
 		</div>
-	</div>
 
+	</div>
 	<div id="fh5co-page">
 		<header id="fh5co-header" role="banner">
 			<div class="container">
@@ -152,9 +142,17 @@
 		</header>
 		<div id="fh5co-intro-section">
 			<div class="container">
+				
 				<div class="row">
 					<div class="col-md-8 offset-md-2 text-center">
-						<h2 class="text-success ml12">Spełniamy marzenie, wspieramy fundacje „Mam marzenie”</h2>
+						<h2 class="text-success ml12">Spełniamy marzenie wspieramy fundacje „Mam marzenie”</h2>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-8 offset-md-2 text-center fulfill-wish">
+						<span>Mamy już </span>
+						<span class="count">97</span>
+						<span>spełnionych marzeń</span>
 					</div>
 				</div>
 			</div>
@@ -164,10 +162,7 @@
 				<div class="row">
 					<div class="col-12 p-0">
 						<a href="#" class="featured-grid" style="background-image: url(images/kids.jpg);">
-							<!-- <div class="desc">
-								<h3>Work with love</h3>
-								<span>Web Design</span>
-							</div> -->
+
 						</a>
 					</div>
 				</div>
@@ -205,7 +200,7 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-8 offset-md-2 text-center">
-							<h2 class="text-white">
+							<h2 class="text-white blue-baloon">
 								<span>Jak</span>
 								<span>pomagamy</span>
 							</h2>
@@ -234,7 +229,7 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-8 offset-md-2 text-center">
-							<h2>
+							<h2 class="yellow-baloon">
 								<span>Marzenia</span>
 							</h2>
 							<p>
@@ -250,129 +245,35 @@
 			</div>
 			<div class="container">
 
-				<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-					<div class="carousel-inner">
-						<div class="carousel-item active">
-							<div class="row">
-								<div class="col-md-4 text-center">
-									<div class="blog-inner">
-										<a href="#"><img class="img-responsive" src="images/thumb_01.jpg" alt="Blog"></a>
-										<div class="desc">
-											<h3>
-												<span><a href="#">Kacper i jego marzenie</a></span>
-												<span><small>Grudzień 18, 2016</small></h3></span>
+				<div id="app">
+					<div>
+
+						<div id="dreamers-owl" class="owl-carousel owl-theme">
+							<div class="dreamers-dream text-center" v-for="user in users">
 
 
-											<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the
-												blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language
-												ocean.</p>
-											<p><a href="" class="btn btn-primary btn-outline with-arrow">Czytaj wiecej<i class="icon-arrow-right"></i></a></p>
-										</div>
+								<div class="blog-inner">
+									<div class="blog-img">
+										<img class="img-responsive dreamer-img" :src="user.avatar" alt="Blog">
+									</div>
+									<div class="desc">
+										<h3>
+											<span style="margin-top:1em;"><a href="#">{{ user.name }}</a></span>
+											<span class="dreamer-wish"><small>{{ user.wish.slice(0,88) }}</small></span>
+										</h3>
+										<p class="read-more-btn"><a @click="passUser(user)" class="btn btn-primary btn-outline with-arrow"
+											 data-toggle="modal" data-target="#myModal" aria-hidden="true">Czytaj wiecej<i class="icon-arrow-right"></i></a></p>
 									</div>
 								</div>
-								<div class="col-md-4 text-center">
-									<div class="blog-inner">
-										<a href="#"><img class="img-responsive" src="images/thumb_01.jpg" alt="Blog"></a>
-										<div class="desc">
-											<h3>
-												<span><a href="#">Kacper i jego marzenie</a></span>
-												<span><small>Grudzień 18, 2016</small></h3></span>
 
-
-											<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the
-												blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language
-												ocean.</p>
-											<p><a href="" class="btn btn-primary btn-outline with-arrow">Czytaj wiecej<i class="icon-arrow-right"></i></a></p>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-4 text-center">
-									<div class="blog-inner">
-										<a href="#"><img class="img-responsive" src="images/thumb_01.jpg" alt="Blog"></a>
-										<div class="desc">
-											<h3>
-												<span><a href="#">Kacper i jego marzenie</a></span>
-												<span><small>Grudzień 18, 2016</small></h3></span>
-
-
-											<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the
-												blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language
-												ocean.</p>
-											<p><a href="" class="btn btn-primary btn-outline with-arrow" data-toggle="modal" data-target="#myModal"
-												 aria-hidden="true">Czytaj wiecej<i class="icon-arrow-right"></i></a>
-
-
-											</p>
-										</div>
-									</div>
-								</div>
 							</div>
+
 						</div>
-						<div class="carousel-item">
-							<div class="row">
-								<div class="col-md-4 text-center">
-									<div class="blog-inner">
-										<a href="#"><img class="img-responsive" src="images/thumb_01.jpg" alt="Blog"></a>
-										<div class="desc">
-											<h3>
-												<span><a href="#">Kacper i jego marzenie</a></span>
-												<span><small>Grudzień 18, 2016</small></h3></span>
 
 
-											<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the
-												blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language
-												ocean.</p>
-											<p><a href="" class="btn btn-primary btn-outline with-arrow">Czytaj wiecej<i class="icon-arrow-right"></i></a></p>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-4 text-center">
-									<div class="blog-inner">
-										<a href="#"><img class="img-responsive" src="images/thumb_01.jpg" alt="Blog"></a>
-										<div class="desc">
-											<h3>
-												<span><a href="#">Kacper i jego marzenie</a></span>
-												<span><small>Grudzień 18, 2016</small></h3></span>
 
 
-											<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the
-												blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language
-												ocean.</p>
-											<p><a href="" class="btn btn-primary btn-outline with-arrow">Czytaj wiecej<i class="icon-arrow-right"></i></a></p>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-4 text-center">
-									<div class="blog-inner">
-										<a href="#"><img class="img-responsive" src="images/thumb_01.jpg" alt="Blog"></a>
-										<div class="desc">
-											<h3>
-												<span><a href="#">Kacper i jego marzenie</a></span>
-												<span><small>Grudzień 18, 2016</small></h3></span>
-
-
-											<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the
-												blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language
-												ocean.</p>
-											<p><a href="" class="btn btn-primary btn-outline with-arrow" data-toggle="modal" data-target="#myModal"
-												 aria-hidden="true">Czytaj wiecej<i class="icon-arrow-right"></i></a>
-
-
-											</p>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
 					</div>
-					<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-						<span class="sr-only">Previous</span>
-					</a>
-					<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-						<span class="carousel-control-next-icon" aria-hidden="true"></span>
-						<span class="sr-only">Next</span>
-					</a>
 				</div>
 
 			</div>
@@ -383,7 +284,7 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-8 offset-md-2 text-center">
-							<h2>
+							<h2 class="red-baloon">
 								<span>Fundacja</span>
 							</h2>
 							<p>
@@ -428,7 +329,7 @@
 				<div class="container" style="margin-top: 26em;">
 					<div class="row">
 						<div class="col-md-8 offset-md-2 text-center">
-							<h2 class="text-white">
+							<h2 class="text-white blue-baloon">
 								<span>Jak</span>
 								<span>pomagamy</span>
 							</h2>
@@ -457,7 +358,7 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-8 offset-md-2 text-center">
-							<h2>
+							<h2 class="red-baloon">
 								<span>Konto</span>
 							</h2>
 							<p>
@@ -494,28 +395,40 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-8 offset-md-2 text-center">
-							<h2 class="text-white">
+							<h2 class="text-white yellow-baloon">
 								<span>Kontakt</span>
 							</h2>
 							<div class="row">
 								<div class="col-12">
-									<form id="contact-form" class="text-left">
-										<div class="form-group">
-											<label for="form__input--name">Podpis</label>
-											<input type="name" class="form-control" id="form__input--name">
+									<div id="app3">
+
+										<div v-if="errors.length" class="alert alert-danger" role="alert">
+											<span v-for="error in errors">{{ error }}</span>
+											
 										</div>
 
-										<div class="form-group">
-											<label for="form__input--mail">Adres e-mail</label>
-											<input type="email" class="form-control" id="form__input--mail">
-										</div>
+<div v-if="success" class="alert alert-success" role="alert">
+	<span>Wysłano wiadomość!</span>
 
-										<div class="form-group">
-											<label for="exampleFormControlTextarea1">Wiadomość</label>
-											<textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
-										</div>
-										<button type="submit" class="btn btn-success px-5 mb-4">Wyślij</button>
-									</form>
+</div>
+										<form id="contact-form" class="text-left" @submit.prevent="checkForm" method="POST">
+											<div class="form-group">
+												<label for="form__input--name">Podpis</label>
+												<input type="name" class="form-control" id="form__input--name" v-model="user.name">
+											</div>
+
+											<div class="form-group">
+												<label for="form__input--mail">Adres e-mail</label>
+<input type="email" class="form-control" id="form__input--mail" v-model="user.email">
+											</div>
+
+											<div class="form-group">
+												<label for="exampleFormControlTextarea1">Wiadomość</label>
+<textarea class="form-control" id="exampleFormControlTextarea1" rows="5" v-model="user.msg"></textarea>
+											</div>
+											<button type="submit" class="btn btn-success px-5 mb-4">Wyślij</button>
+										</form>
+									</div>
 								</div>
 							</div>
 							<div class="row">
@@ -560,10 +473,7 @@
 	</div>
 
 
-	<!-- jQuery -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<!-- jQuery Easing -->
-	<script src="js/jquery.easing.1.3.js"></script>
+
 	<!-- Bootstrap -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
@@ -571,18 +481,14 @@
 	<script src="js/jquery.waypoints.min.js"></script>
 	<!-- MAIN JS -->
 	<script src="js/main.js"></script>
+	<script src="./js/gallery.js"></script>
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
+
+	<script src="./js/owl.carousel.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+	<script src="js/app.js"></script>
 	<script>
-		$(document).ready(function () {
-			$(".owl-carousel").owlCarousel({
-				items:3,
-				loop: true,
-				autoplay: 3000
-			});
-		});
-
 		// ===== Scroll to Top ==== 
 		$(window).scroll(function () {
 			if ($(this).scrollTop() >= 50) { // If page is scrolled more than 50px
@@ -604,7 +510,25 @@
 				scrollTop: 0 // Scroll to top of body
 			}, 500);
 		});
+
+		const animateCounter =function(){
+			$('.count').each(function () {
+			$(this).prop('Counter', 0).animate({
+				Counter: $(this).text()
+			}, {
+					duration: 5000,
+					easing: 'swing',
+					step: function (now) {
+						$(this).text(Math.ceil(now));
+					}
+				});
+		});
+		};
+animateCounter();
+	
 	</script>
+
+
 
 
 </body>
